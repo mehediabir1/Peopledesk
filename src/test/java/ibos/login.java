@@ -1,9 +1,11 @@
 package ibos;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.security.Key;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
@@ -34,18 +36,18 @@ public class login {
 
     public static void employee_mng(){
         driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/form/div[2]/div[2]/div/div[2]/div/div")).click();
-        String searchName = "Demo";
+        String searchName = "Abir";
         System.out.println("Module: Employee Management");
         WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/form/div[2]/div/div/div[2]/div[1]/ul/li[1]/div/div/input"));
         searchBar.sendKeys(searchName);
+        searchBar.sendKeys(Keys.RETURN);
 
         try {
-            boolean result = driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/form/div[2]/div/div/div[2]/div[2]/div/table/tbody/tr/td[1]/div/div[2]/span")).isDisplayed();
+            boolean elemFound = driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/form/div[2]/div/div/div[2]/div[2]/div/table/tbody/tr[1]/td[2]/div")).isDisplayed();
+            System.out.println("Search Result Came");
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             System.out.println("No Search Result");
         }
-            System.out.println("Search Result Came");
-
     }
 }
