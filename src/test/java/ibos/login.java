@@ -33,10 +33,9 @@ public class login {
     }
 
     public static void employee_mng(){
-        String searchName = "No";
-        System.out.println("Module: Employee Management");
         driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/form/div[2]/div[2]/div/div[2]/div/div")).click();
-       // WebElement datas = driver.findElement(By.className("tableBody-title"));
+        String searchName = "Demo";
+        System.out.println("Module: Employee Management");
         WebElement searchBar = driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/form/div[2]/div/div/div[2]/div[1]/ul/li[1]/div/div/input"));
         searchBar.sendKeys(searchName);
 
@@ -46,9 +45,7 @@ public class login {
         catch (NoSuchElementException e){
             System.out.println("No Search Result");
         }
-
             System.out.println("Search Result Came");
 
-        //System.out.println(result.contains(searchName));
     }
 }
