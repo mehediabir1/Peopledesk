@@ -8,8 +8,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class BasePeopledesk {
     public static WebDriver driver;
-
-
     public static void main(String[] args) {
 
     }

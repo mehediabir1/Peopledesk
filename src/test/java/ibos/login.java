@@ -15,7 +15,8 @@ public class login {
     public static void main(String[] args) {
         ChromeOpen();
         login_001();
-        employee_mng();
+        login_002();
+        //employee_mng();
     }
 
     public static void ChromeOpen(){
@@ -25,15 +26,27 @@ public class login {
         driver.get("https://ibos.peopledesk.io/");
     }
 
-    //-- CREDENTIAL OF MANAGEMENT--//
+    //-- LOGIN WITH ACTIVE USER ACCOUNT CREDENTIAL --//
     public static void login_001(){
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input")).sendKeys("abir@ibos.io");
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input")).sendKeys("@demo123");
         WebElement login = driver.findElement(By.className("btn-basic"));
         login.click();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+        driver.findElement(By.className("profile-menu-img")).click();
+        driver.findElement(By.className("single-profile-popup-list-txt")).click();
+        System.out.println("Logged Out");
     }
 
+    //-- LOGIN WITH IN-ACTIVE USER ACCOUNT CREDENTIAL --//
+    public static void login_002(){
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input")).sendKeys("abir@ibos.io");
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input")).sendKeys("@demo123");
+        WebElement login = driver.findElement(By.className("btn-basic"));
+        login.click();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+    }
     public static void employee_mng(){
         driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/form/div[2]/div[2]/div/div[2]/div/div")).click();
         String searchName = "Abir";

@@ -1,14 +1,17 @@
-package ibos;
-
+import ibos.BasePeopledesk;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static ibos.BasePeopledesk.GetUrl;
+import static ibos.login.ChromeOpen;
+
 public class EmployeeManagement extends BasePeopledesk{
+
+    public static WebDriver driver;
 
     public static void main(String[] args) {
         ChromeOpen();
@@ -17,10 +20,9 @@ public class EmployeeManagement extends BasePeopledesk{
         employee_mng_001();
         employee_mng_002();
     }
-    public static WebDriver driver;
-
     public static void login() {
         driver.navigate().refresh();
+        driver.get("https://ibos.peopledesk.io");
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input")).sendKeys("abir@ibos.io");
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input")).sendKeys("@demo123");
         WebElement login = driver.findElement(By.className("btn-basic"));
