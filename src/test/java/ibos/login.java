@@ -16,7 +16,8 @@ public class login {
         ChromeOpen();
         login_001();
         login_002();
-       // Logout();
+        login_003();
+        //Logout();
         //login_002();
         //employee_mng();
     }
@@ -67,6 +68,7 @@ public class login {
             driver.findElement(By.className("profile-menu-img")).isDisplayed();
             System.out.println("logged in");
             System.out.println("login_002 FAILED\n");
+            Logout();
         }
         catch (Exception e){
             System.out.println("can not login");
@@ -74,10 +76,17 @@ public class login {
         }
     }
 
-    //-- LOGIN WITH WRONG USER ACCOUNT CREDENTIAL --//
+    //-- LOGIN WITH ACTIVE - WRONG (PASSWORD) USER ACCOUNT CREDENTIAL --//
     public static void login_003(){
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input")).sendKeys("demo541@ibos.io");
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input")).sendKeys("@demo123");
+        WebElement mail = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input"));
+        WebElement password = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input"));
+        mail.click();
+        mail.clear();
+        mail.sendKeys("demo@ibos.io");
+        password.click();
+        password.clear();
+        password.sendKeys("demo123@");
+
         WebElement login = driver.findElement(By.className("btn-basic"));
         login.click();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -85,11 +94,12 @@ public class login {
         try {
             driver.findElement(By.className("profile-menu-img")).isDisplayed();
             System.out.println("logged in");
-            System.out.println("login_003 PASSED");
+            System.out.println("login_003 FAILED");
+            Logout();
         }
         catch (Exception e){
             System.out.println("can not login");
-            System.out.println("login_003 FAILED");
+            System.out.println("login_003 PASSED");
         }
     }
 
