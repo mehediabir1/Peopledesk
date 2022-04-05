@@ -36,10 +36,15 @@ public class login {
             driver.findElement(By.xpath("//*[@id=\"simple-popover\"]/div[3]/div/ul/li[2]")).click();
     }
 
+
     //-- LOGIN WITH ACTIVE USER ACCOUNT CREDENTIAL --//
+
     public static void login_001() {
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input")).sendKeys("abir@ibos.io");
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input")).sendKeys("@demo123");
+        WebElement mail = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input"));
+        WebElement password = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input"));
+        mail.sendKeys("abir@ibos.io");
+        password.sendKeys("@demo123");
+
         WebElement login = driver.findElement(By.className("btn-basic"));
         login.click();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -57,9 +62,13 @@ public class login {
     }
 
     //-- LOGIN WITH IN-ACTIVE USER ACCOUNT CREDENTIAL --//
+
     public static void login_002(){
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input")).sendKeys("demo123@ibos.io");
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input")).sendKeys("@demo123");
+        WebElement mail = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input"));
+        WebElement password = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input"));
+        mail.sendKeys("demo123@ibos.io");
+        password.sendKeys("@demo123");
+
         WebElement login = driver.findElement(By.className("btn-basic"));
         login.click();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -73,18 +82,17 @@ public class login {
         catch (Exception e){
             System.out.println("can not login");
             System.out.println("login_002 PASSED\n");
+            driver.navigate().refresh();
         }
     }
 
+
     //-- LOGIN WITH ACTIVE - WRONG (PASSWORD) USER ACCOUNT CREDENTIAL --//
+
     public static void login_003(){
         WebElement mail = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[1]/div/input"));
         WebElement password = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/input"));
-        mail.click();
-        mail.clear();
         mail.sendKeys("demo@ibos.io");
-        password.click();
-        password.clear();
         password.sendKeys("demo123@");
 
         WebElement login = driver.findElement(By.className("btn-basic"));
